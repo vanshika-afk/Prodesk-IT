@@ -1,0 +1,73 @@
+/* =====================
+   CUSTOM CSS (Tailwind Companion)
+   Only things Tailwind utilities can't handle cleanly
+   ===================== */
+
+/* Google Fonts already loaded in <head> */
+
+/* ---- Glassmorphism navbar backdrop ---- */
+#navbar {
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+}
+
+/* ---- Primary Button ---- */
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: #e85d26;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: #c94f1e;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 20px rgba(232, 93, 38, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid #e85d26;
+  outline-offset: 3px;
+}
+
+/* ---- Hero fade-up animation ---- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.7s ease both;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+
+/* ---- Respect reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeUp {
+    animation: none;
+  }
+  .btn-primary,
+  .service-card {
+    transition: none;
+  }
+}
