@@ -1,0 +1,60 @@
+.task-card {
+  background: white;
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.15s, transform 0.1s;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* The text of the task */
+.task-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #172b4d;
+  margin-bottom: 12px;
+  word-break: break-word;
+}
+
+/* Buttons row */
+.card-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Base button style */
+.btn {
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+/* Move button — blue */
+.btn-move {
+  background: #e8f0fe;
+  color: #1a73e8;
+}
+
+/* Delete button — red */
+.btn-delete {
+  background: #fce8e6;
+  color: #d93025;
+  margin-left: auto; /* pushes delete to the right */
+}
