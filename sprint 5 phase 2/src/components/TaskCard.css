@@ -1,0 +1,102 @@
+.task-card {
+  background: white;
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.15s, transform 0.1s;
+
+  /* NEW — left border for priority color */
+  border-left: 4px solid transparent;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* NEW — Priority border colors */
+/* High   = Red    border */
+.priority-high   { border-left-color: #e53935; }
+/* Medium = Yellow border */
+.priority-medium { border-left-color: #fbc02d; }
+/* Low    = Green  border */
+.priority-low    { border-left-color: #43a047; }
+
+/* NEW — Priority badge pill */
+.priority-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-bottom: 8px;
+}
+
+.badge-high   { background: #fdecea; color: #c62828; }
+.badge-medium { background: #fff8e1; color: #f57f17; }
+.badge-low    { background: #e8f5e9; color: #2e7d32; }
+
+/* Task text — same as Phase 1 */
+.task-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #172b4d;
+  margin-bottom: 12px;
+  word-break: break-word;
+}
+
+/* NEW — Edit mode input */
+.edit-area {
+  margin-bottom: 4px;
+}
+
+.edit-input {
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 14px;
+  border: 2px solid #1a73e8;
+  border-radius: 6px;
+  outline: none;
+  margin-bottom: 8px;
+  color: #172b4d;
+  font-family: inherit;
+}
+
+/* Buttons row */
+.card-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.btn {
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn:hover  { opacity: 0.8; }
+.btn:active { transform: scale(0.96); }
+
+/* Move button — blue */
+.btn-move { background: #e8f0fe; color: #1a73e8; }
+
+/* NEW — Edit button — grey */
+.btn-edit { background: #f1f3f4; color: #444; }
+
+/* NEW — Save button — green */
+.btn-save { background: #e8f5e9; color: #2e7d32; }
+
+/* NEW — Cancel button — orange */
+.btn-cancel { background: #fff3e0; color: #e65100; }
+
+/* Delete button — red, pushed to the right */
+.btn-delete {
+  background: #fce8e6;
+  color: #d93025;
+  margin-left: auto;
+}

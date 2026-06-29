@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CashFlow — Phase 1</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="topbar">
+    <div class="topbar-brand">
+      <span></span> CashFlow
+    </div>
+    <div class="topbar-phase">PHASE 01 / BASE MVP</div>
+  </div>
+
+  <div class="page">
+
+    <div class="page-header">
+      <h1>Salary &amp; Expense Tracker</h1>
+      <p>Enter your salary, log expenses, and track your remaining balance.</p>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Salary</div>
+        <div class="stat-value" id="displaySalary">₹0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Expenses</div>
+        <div class="stat-value" id="displayExpenses">₹0</div>
+      </div>
+      <div class="stat-card highlight">
+        <div class="stat-label">Remaining</div>
+        <div class="stat-value" id="displayBalance">₹0</div>
+      </div>
+    </div>
+
+    <!-- Salary Input -->
+    <div class="card">
+      <div class="section-label">Set Salary</div>
+      <div class="field">
+        <label for="salaryInput">Total Monthly Salary (₹)</label>
+        <input type="number" id="salaryInput" placeholder="e.g. 50000" />
+      </div>
+      <button class="btn btn-primary" id="setSalaryBtn">Confirm Salary</button>
+      <p class="error" id="salaryError"></p>
+    </div>
+
+    <!-- Expense Input -->
+    <div class="card">
+      <div class="section-label">Log Expense</div>
+      <div class="field">
+        <label for="expenseName">Expense Name</label>
+        <input type="text" id="expenseName" placeholder="e.g. Rent, Groceries" />
+      </div>
+      <div class="field">
+        <label for="expenseAmount">Amount (₹)</label>
+        <input type="number" id="expenseAmount" placeholder="e.g. 12000" />
+      </div>
+      <button class="btn btn-primary" id="addExpenseBtn">+ Add Expense</button>
+      <p class="error" id="expenseError"></p>
+    </div>
+
+    <!-- Expense List -->
+    <div class="card">
+      <div class="section-label">Expense Log</div>
+      <ul id="expenseList">
+        <li class="empty-msg">No expenses logged yet.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

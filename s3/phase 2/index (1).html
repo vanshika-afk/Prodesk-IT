@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Finder</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- Top heading -->
+    <h1 class="page-title">Dev-Detective</h1>
+    <p class="page-subtitle">Search any GitHub username</p>
+
+    <!-- Search Box -->
+    <div class="search-box">
+      <input
+        type="text"
+        id="usernameInput"
+        placeholder="e.g. octocat"
+      />
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <!-- Loading Spinner (hidden by default) -->
+    <div id="loadingDiv" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+
+    <!-- Error Message (hidden by default) -->
+    <div id="errorDiv" class="error-box hidden">
+      <span class="error-icon"></span>
+      <p id="errorText">User not found!</p>
+    </div>
+
+    <!-- Profile Card (hidden by default) -->
+    <div id="profileCard" class="card hidden">
+
+      <!-- Avatar + Name -->
+      <div class="card-header">
+        <img id="avatar" src="" alt="avatar" />
+        <div class="card-name-block">
+          <h2 id="name"></h2>
+          <a id="username" href="" target="_blank"></a>
+          <p id="joinDate" class="join-date"></p>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <p id="bio" class="bio"></p>
+
+      <!-- Stats row -->
+      <div class="stats">
+        <div class="stat-item">
+          <span id="repos" class="stat-num">0</span>
+          <span class="stat-label">Repos</span>
+        </div>
+        <div class="stat-item">
+          <span id="followers" class="stat-num">0</span>
+          <span class="stat-label">Followers</span>
+        </div>
+        <div class="stat-item">
+          <span id="following" class="stat-num">0</span>
+          <span class="stat-label">Following</span>
+        </div>
+      </div>
+
+      <!-- Portfolio / Website -->
+      <div id="websiteRow" class="website-row hidden">
+        <span>🔗</span>
+        <a id="website" href="" target="_blank"></a>
+      </div>
+
+    </div>
+    <!-- end profile card -->
+
+
+    <!-- ===================== -->
+    <!-- REPOS SECTION (Phase 2) — hidden by default -->
+    <!-- ===================== -->
+    <div id="reposSection" class="repos-section hidden">
+
+      <!-- Repos loading spinner -->
+      <div id="reposLoading" class="repos-loading hidden">
+        <div class="spinner-small"></div>
+        <span>Loading repositories...</span>
+      </div>
+
+      <!-- Repos heading -->
+      <h3 id="reposHeading" class="repos-heading hidden">
+        Latest Repositories
+      </h3>
+
+      <!-- The list where repo cards go -->
+      <ul id="reposList" class="repos-list"></ul>
+
+    </div>
+    <!-- end repos section -->
+
+  </div>
+
+  <!-- Our JS -->
+  <script src="app.js"></script>
+</body>
+</html>

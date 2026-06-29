@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CashFlow — Phase 3</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Critical balance alert -->
+  <div id="alertBanner" class="alert-banner hidden">
+    ⚠ Critical Alert — Remaining balance is below 10% of your salary.
+  </div>
+
+  <div class="topbar">
+    <div class="topbar-brand"><span></span> CashFlow</div>
+    <div class="topbar-phase">PHASE 03 / FULL FEATURE</div>
+  </div>
+
+  <div class="page">
+
+    <div class="page-header">
+      <h1>Salary &amp; Expense Tracker</h1>
+      <p>PDF export, live currency conversion, and threshold alerts.</p>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Salary</div>
+        <div class="stat-value" id="displaySalary">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Expenses</div>
+        <div class="stat-value" id="displayExpenses">0</div>
+      </div>
+      <div class="stat-card highlight">
+        <div class="stat-label">Remaining</div>
+        <div class="stat-value balance-text" id="displayBalance">0</div>
+      </div>
+    </div>
+
+    <!-- Currency -->
+    <div class="card">
+      <div class="section-label">Currency</div>
+      <div class="currency-row">
+        <button class="currency-btn active" data-currency="INR">INR ₹</button>
+        <button class="currency-btn" data-currency="USD">USD $</button>
+        <button class="currency-btn" data-currency="EUR">EUR €</button>
+        <button class="currency-btn" data-currency="GBP">GBP £</button>
+      </div>
+      <p id="rateInfo"></p>
+    </div>
+
+    <!-- Salary Input -->
+    <div class="card">
+      <div class="section-label">Set Salary</div>
+      <div class="field">
+        <label for="salaryInput">Total Monthly Salary</label>
+        <input type="number" id="salaryInput" placeholder="e.g. 50000" />
+      </div>
+      <button class="btn btn-primary" id="setSalaryBtn">Confirm Salary</button>
+      <p class="error" id="salaryError"></p>
+    </div>
+
+    <!-- Expense Input -->
+    <div class="card">
+      <div class="section-label">Log Expense</div>
+      <div class="field">
+        <label for="expenseName">Expense Name</label>
+        <input type="text" id="expenseName" placeholder="e.g. Rent, Groceries" />
+      </div>
+      <div class="field">
+        <label for="expenseAmount">Amount</label>
+        <input type="number" id="expenseAmount" placeholder="e.g. 12000" />
+      </div>
+      <button class="btn btn-primary" id="addExpenseBtn">+ Add Expense</button>
+      <p class="error" id="expenseError"></p>
+    </div>
+
+    <!-- Expense List -->
+    <div class="card">
+      <div class="section-label">Expense Log</div>
+      <ul id="expenseList">
+        <li class="empty-msg">No expenses logged yet.</li>
+      </ul>
+    </div>
+
+    <!-- Chart -->
+    <div class="card">
+      <div class="section-label">Spending Breakdown</div>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- Export -->
+    <div class="card">
+      <div class="section-label">Export</div>
+      <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:14px;">
+        Download a full PDF report of your expense log and current balance.
+      </p>
+      <button class="btn btn-ghost" id="downloadBtn">⬇ Download PDF Report</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

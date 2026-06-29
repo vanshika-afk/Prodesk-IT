@@ -1,0 +1,400 @@
+/* ════════════════════════════════════════════════════
+   COVER LETTER GENERATOR — style.css
+   Phase 1: Base layout & form
+   Phase 2: Mode toggle + API key field + loading
+   Phase 3: Dropzone + resume badge + paragraph output
+   ════════════════════════════════════════════════════ */
+
+/* ─── Reset & Base ──────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #8cefe9;
+  color: #000000;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px 60px;
+}
+
+/* ─── Container ─────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 860px;
+}
+
+/* ─── Header ────────────────────────────────────────── */
+header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #1a1a2e;
+}
+
+.accent { color: #019584; }
+
+.subtitle {
+  margin-top: 6px;
+  color: #000000;
+  font-size: 0.95rem;
+}
+
+/* ─── Grid Layout ───────────────────────────────────── */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  main { grid-template-columns: 1fr; }
+  header h1 { font-size: 1.6rem; }
+}
+
+/* ─── Cards ─────────────────────────────────────────── */
+.card {
+  background: #c0ebf8;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.card h2 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+/* ─── Form Fields ───────────────────────────────────── */
+.field {
+  margin-bottom: 14px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3d4566;
+  margin-bottom: 6px;
+}
+
+.field input[type="text"],
+.field input[type="password"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #dde3f0;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  color: #1a1a2e;
+  background: #f8faff;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.field input:focus {
+  border-color: #4f6ef7;
+  background: #fff;
+}
+
+.field input::placeholder { color: #b0bcd4; }
+
+/* ─── Phase 3: Dropzone ─────────────────────────────── */
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 2px dashed #a0c4d8;
+  border-radius: 10px;
+  background: #eaf7fb;
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  text-align: center;
+  min-height: 90px;
+}
+
+.dropzone:hover,
+.dropzone.drag-over {
+  border-color: #019584;
+  background: #d8f5f2;
+}
+
+.dropzone.parsing {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.drop-icon { font-size: 1.6rem; line-height: 1; }
+
+.drop-text {
+  font-size: 0.82rem;
+  color: #3d4566;
+  line-height: 1.5;
+}
+
+.drop-sub { color: #888; font-size: 0.78rem; }
+
+/* link-style button inside dropzone */
+.link-btn {
+  background: none;
+  border: none;
+  color: #019584;
+  font-weight: 600;
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* ─── Phase 3: Resume Badge (after upload) ──────────── */
+.resume-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #d8f5f2;
+  border: 1.5px solid #019584;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #016e62;
+  gap: 8px;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0 2px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.remove-btn:hover { color: #e03c3c; }
+
+/* ─── Phase 2: Mode Toggle ───────────────────────────── */
+.mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+
+.mode-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3d4566;
+}
+
+.mode-text {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #019584;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #cfd8e3;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle-switch input:checked + .slider { background: #019584; }
+.toggle-switch input:checked + .slider::before { transform: translateX(18px); }
+
+/* ─── Phase 2: API Key Field ────────────────────────── */
+.api-key-field {
+  display: none;
+  background: #fffbe6;
+  border: 1.5px dashed #f0a500;
+  border-radius: 10px;
+  padding: 12px 14px 14px;
+  margin-bottom: 10px;
+}
+
+.api-key-field.visible { display: block; }
+
+.env-note {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #c47a00;
+  margin-top: 2px;
+}
+
+/* ─── Generate Button ───────────────────────────────── */
+#generateBtn {
+  margin-top: 6px;
+  width: 100%;
+  padding: 12px;
+  background: #4f6ef7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#generateBtn:hover:not(:disabled) { background: #3a57e8; }
+#generateBtn:active:not(:disabled) { transform: scale(0.98); }
+#generateBtn:disabled { background: #9baee8; cursor: not-allowed; }
+
+/* ─── Output Card Header ────────────────────────────── */
+.output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.copy-btn {
+  padding: 6px 16px;
+  background: transparent;
+  border: 1.5px solid #dde3f0;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #4f6ef7;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.copy-btn:hover {
+  background: #eef1ff;
+  border-color: #4f6ef7;
+}
+
+/* ─── Phase 2: Loading Spinner ──────────────────────── */
+.loading-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 160px;
+  color: #3d4566;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.loading-state.visible { display: flex; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #dde3f0;
+  border-top-color: #4f6ef7;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ─── Phase 3: Letter Body (HTML paragraphs) ─────────── */
+.letter-body {
+  min-height: 220px;
+  background: #f8faff;
+  border-radius: 8px;
+  padding: 18px;
+  border: 1.5px solid #dde3f0;
+}
+
+/* Each <p> rendered from textToHTML() */
+.letter-body p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.letter-body p:last-child { margin-bottom: 0; }
+
+/* Placeholder italic state */
+.letter-body.placeholder {
+  color: #b0bcd4;
+  font-style: italic;
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.88rem;
+}
+
+.letter-body.hidden { display: none; }
+
+/* ─── Copy Notice ───────────────────────────────────── */
+.copy-notice {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: #34c97e;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s;
+  height: 18px;
+}
+
+.copy-notice.show { opacity: 1; }
+
+/* ─── Security Note ──────────────────────────────────── */
+.security-note {
+  margin-top: 24px;
+  background: #fff8e1;
+  border-left: 4px solid #f0a500;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.8rem;
+  color: #5a4000;
+  line-height: 1.6;
+}
+
+.security-note code {
+  background: #ffeab0;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: monospace;
+}

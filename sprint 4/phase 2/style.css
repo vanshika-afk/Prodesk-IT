@@ -1,0 +1,334 @@
+/* ─── Reset & Base ──────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #8cefe9;
+  color: #000000;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px 60px;
+}
+
+/* ─── Container ─────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 820px;
+}
+
+/* ─── Header ────────────────────────────────────────── */
+header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #1a1a2e;
+}
+
+.accent {
+  color: #019584;
+}
+
+.subtitle {
+  margin-top: 6px;
+  color: #000000;
+  font-size: 0.95rem;
+}
+
+/* ─── Main Layout ───────────────────────────────────── */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 620px) {
+  main { grid-template-columns: 1fr; }
+  header h1 { font-size: 1.6rem; }
+}
+
+/* ─── Card ──────────────────────────────────────────── */
+.card {
+  background: #c0ebf8;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+/* ─── Form Fields ───────────────────────────────────── */
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3d4566;
+  margin-bottom: 6px;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #dde3f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #1a1a2e;
+  background: #f8faff;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.field input:focus {
+  border-color: #4f6ef7;
+  background: #fff;
+}
+
+.field input::placeholder {
+  color: #b0bcd4;
+}
+
+/* ─── Mode Toggle ────────────────────────────────────── */
+.mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.mode-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3d4566;
+}
+
+.mode-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #019584;
+}
+
+/* Toggle switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #cfd8e3;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle-switch input:checked + .slider {
+  background: #019584;
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(18px);
+}
+
+/* ─── API Key Field ───────────────────────────────────── */
+.api-key-field {
+  display: none;
+  background: #fffbe6;
+  border: 1.5px dashed #f0a500;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.api-key-field.visible {
+  display: block;
+}
+
+.env-note {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: #c47a00;
+  margin-top: 2px;
+}
+
+/* ─── Generate Button ───────────────────────────────── */
+#generateBtn {
+  margin-top: 4px;
+  width: 100%;
+  padding: 12px;
+  background: #4f6ef7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#generateBtn:hover:not(:disabled) {
+  background: #3a57e8;
+}
+
+#generateBtn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+#generateBtn:disabled {
+  background: #9baee8;
+  cursor: not-allowed;
+}
+
+/* ─── Output Card ───────────────────────────────────── */
+.output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.copy-btn {
+  padding: 6px 16px;
+  background: transparent;
+  border: 1.5px solid #dde3f0;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #4f6ef7;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.copy-btn:hover {
+  background: #eef1ff;
+  border-color: #4f6ef7;
+}
+
+/* ─── Loading State ──────────────────────────────────── */
+.loading-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 160px;
+  color: #3d4566;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.loading-state.visible {
+  display: flex;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #dde3f0;
+  border-top-color: #4f6ef7;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ─── Letter Body ────────────────────────────────────── */
+.letter-body {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: #000000;
+  white-space: pre-wrap;
+  min-height: 220px;
+  background: #f8faff;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1.5px solid #dde3f0;
+}
+
+.letter-body.placeholder {
+  color: #b0bcd4;
+  font-style: italic;
+}
+
+.letter-body.hidden {
+  display: none;
+}
+
+/* ─── Copy Notice ───────────────────────────────────── */
+.copy-notice {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: #34c97e;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s;
+  height: 18px;
+}
+
+.copy-notice.show {
+  opacity: 1;
+}
+
+/* ─── Security Note ──────────────────────────────────── */
+.security-note {
+  margin-top: 24px;
+  background: #fff8e1;
+  border-left: 4px solid #f0a500;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.82rem;
+  color: #5a4000;
+  line-height: 1.6;
+}
+
+.security-note code {
+  background: #ffeab0;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: monospace;
+}

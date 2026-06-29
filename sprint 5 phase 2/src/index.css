@@ -1,0 +1,13 @@
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #1a73e8;
+  min-height: 100vh;
+  color: #1a1a2e;
+}

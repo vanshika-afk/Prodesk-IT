@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prodesk IT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+
+      <div class="logo">
+        <img src="logo.png" alt="Prodesk Logo" />
+        <span>PRODESK IT</span>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <label class="switch">
+          <input type="checkbox" onclick="toggleTheme()">
+          <span class="slider"></span>
+        </label>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <h1>We Build Digital Experiences</h1>
+    <p>Prodesk IT helps businesses grow online with SEO, Web Development, and Digital Marketing.</p>
+    <a href="#services" class="btn">Get Started</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>We are a full-service digital agency based in New Delhi. Our team of experts helps businesses of all sizes build their online presence and grow their revenue through smart digital strategies.</p>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>SEO</h3>
+        <p>We optimize your website to rank higher on Google and drive more organic traffic to your business.</p>
+      </div>
+      <div class="card">
+        <h3>Web Development</h3>
+        <p>We build fast, responsive, and modern websites and web applications using the latest technologies.</p>
+      </div>
+      <div class="card">
+        <h3>Digital Marketing</h3>
+        <p>We run targeted campaigns on Google, Facebook, and Instagram to grow your brand and generate leads.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <form onsubmit="formSubmit(event)">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2026 Prodesk IT. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/prodesktechnology/">Facebook</a>
+      <a href="https://www.instagram.com/prodeskit/tagged/">Instagram</a>
+      <a href="https://www.linkedin.com/company/prodesk-it/posts/?feedView=all">LinkedIn</a>
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      var body = document.body;
+      var btn = document.getElementById("themeBtn");
+      if (body.classList.contains("dark")) {
+        body.classList.remove("dark");
+        btn.textContent = "Dark Mode";
+      } else {
+        body.classList.add("dark");
+        btn.textContent = "Light Mode";
+      }
+    }
+
+    function toggleMenu() {
+      var navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("open");
+    }
+
+    var links = document.querySelectorAll(".nav-links a");
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener("click", function () {
+        document.getElementById("navLinks").classList.remove("open");
+      });
+    }
+
+    window.onscroll = function () {
+      var navbar = document.getElementById("navbar");
+      if (window.scrollY > 10) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    };
+
+    function formSubmit(event) {
+      event.preventDefault();
+      alert("Message sent! We will get back to you soon.");
+      event.target.reset();
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+

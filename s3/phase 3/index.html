@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dev-Detective</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ===== TOP HEADING ===== -->
+    <h1 class="page-title">Dev-Detective</h1>
+    <p class="page-subtitle">Search any GitHub username</p>
+
+    <!-- ===== MODE TOGGLE ===== -->
+    <!--
+      This button switches between "Normal Mode" and "Battle Mode".
+      In Normal Mode: one search box, one profile card.
+      In Battle Mode: two search boxes, two profile cards side by side.
+    -->
+    <button id="modeToggleBtn" class="mode-toggle-btn">
+      Enter Battle Mode
+    </button>
+
+
+    <!-- ===================================================== -->
+    <!--  NORMAL MODE SECTION  (shown by default)              -->
+    <!-- ===================================================== -->
+    <div id="normalSection" class="section-wrapper">
+
+      <!-- Search Box -->
+      <div class="search-box">
+        <input type="text" id="usernameInput" placeholder="e.g. octocat" />
+        <button id="searchBtn">Search</button>
+      </div>
+
+      <!-- Loading Spinner -->
+      <div id="loadingDiv" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+      </div>
+
+      <!-- Error Message -->
+      <div id="errorDiv" class="error-box hidden">
+        <span class="error-icon"></span>
+        <p id="errorText">User not found!</p>
+      </div>
+
+      <!-- Profile Card -->
+      <div id="profileCard" class="card hidden">
+        <div class="card-header">
+          <img id="avatar" src="" alt="avatar" />
+          <div class="card-name-block">
+            <h2 id="name"></h2>
+            <a id="username" href="" target="_blank"></a>
+            <p id="joinDate" class="join-date"></p>
+          </div>
+        </div>
+        <p id="bio" class="bio"></p>
+        <div class="stats">
+          <div class="stat-item">
+            <span id="repos" class="stat-num">0</span>
+            <span class="stat-label">Repos</span>
+          </div>
+          <div class="stat-item">
+            <span id="followers" class="stat-num">0</span>
+            <span class="stat-label">Followers</span>
+          </div>
+          <div class="stat-item">
+            <span id="following" class="stat-num">0</span>
+            <span class="stat-label">Following</span>
+          </div>
+        </div>
+        <div id="websiteRow" class="website-row hidden">
+          <span>🔗</span>
+          <a id="website" href="" target="_blank"></a>
+        </div>
+      </div>
+
+      <!-- Repos Section -->
+      <div id="reposSection" class="repos-section hidden">
+        <div id="reposLoading" class="repos-loading hidden">
+          <div class="spinner-small"></div>
+          <span>Loading repositories...</span>
+        </div>
+        <h3 id="reposHeading" class="repos-heading hidden">Latest Repositories</h3>
+        <ul id="reposList" class="repos-list"></ul>
+      </div>
+
+    </div><!-- end #normalSection -->
+
+
+    <!-- ===================================================== -->
+    <!--  BATTLE MODE SECTION  (hidden by default)             -->
+    <!-- ===================================================== -->
+    <div id="battleSection" class="section-wrapper hidden">
+
+      <!-- Two search inputs side by side -->
+      <div class="battle-inputs">
+
+        <!-- Player 1 -->
+        <div class="battle-input-group">
+          <label class="battle-label"> Player 1</label>
+          <div class="search-box">
+            <input type="text" id="battleInput1" placeholder="e.g. torvalds" />
+          </div>
+        </div>
+
+        <!-- VS divider -->
+        <div class="vs-badge">VS</div>
+
+        <!-- Player 2 -->
+        <div class="battle-input-group">
+          <label class="battle-label"> Player 2</label>
+          <div class="search-box">
+            <input type="text" id="battleInput2" placeholder="e.g. gaearon" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Single "Battle!" button -->
+      <button id="battleBtn" class="battle-btn"> Battle!</button>
+
+      <!-- Battle loading (shown while both API calls run) -->
+      <div id="battleLoading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Loading both profiles...</p>
+      </div>
+
+      <!-- Battle error -->
+      <div id="battleError" class="error-box hidden">
+        <span class="error-icon"></span>
+        <p id="battleErrorText">Something went wrong!</p>
+      </div>
+
+      <!-- ===== BATTLE RESULTS ===== -->
+      <!--
+        Two profile cards shown side by side.
+        Winner gets a green "WINNER " badge, loser gets a red "LOSER " badge.
+        The winner/loser logic is calculated in app.js based on total stars.
+      -->
+      <div id="battleResults" class="battle-results hidden">
+
+        <!-- Total Stars comparison bar -->
+        <div id="starsComparison" class="stars-comparison"></div>
+
+        <!-- The two battle cards -->
+        <div class="battle-cards">
+
+          <!-- Battle Card 1 -->
+          <div id="battleCard1" class="card battle-card">
+            <div id="battleBadge1" class="battle-badge hidden"></div>
+            <div class="card-header">
+              <img id="battleAvatar1" src="" alt="avatar" />
+              <div class="card-name-block">
+                <h2 id="battleName1"></h2>
+                <a id="battleUsername1" href="" target="_blank"></a>
+              </div>
+            </div>
+            <div class="stats">
+              <div class="stat-item">
+                <span id="battleRepos1" class="stat-num">0</span>
+                <span class="stat-label">Repos</span>
+              </div>
+              <div class="stat-item">
+                <span id="battleFollowers1" class="stat-num">0</span>
+                <span class="stat-label">Followers</span>
+              </div>
+              <div class="stat-item">
+                <span id="battleStars1" class="stat-num">0</span>
+                <span class="stat-label">⭐ Stars</span>
+              </div>
+            </div>
+          </div><!-- end battle card 1 -->
+
+          <!-- Battle Card 2 -->
+          <div id="battleCard2" class="card battle-card">
+            <div id="battleBadge2" class="battle-badge hidden"></div>
+            <div class="card-header">
+              <img id="battleAvatar2" src="" alt="avatar" />
+              <div class="card-name-block">
+                <h2 id="battleName2"></h2>
+                <a id="battleUsername2" href="" target="_blank"></a>
+              </div>
+            </div>
+            <div class="stats">
+              <div class="stat-item">
+                <span id="battleRepos2" class="stat-num">0</span>
+                <span class="stat-label">Repos</span>
+              </div>
+              <div class="stat-item">
+                <span id="battleFollowers2" class="stat-num">0</span>
+                <span class="stat-label">Followers</span>
+              </div>
+              <div class="stat-item">
+                <span id="battleStars2" class="stat-num">0</span>
+                <span class="stat-label">⭐ Stars</span>
+              </div>
+            </div>
+          </div><!-- end battle card 2 -->
+
+        </div><!-- end .battle-cards -->
+      </div><!-- end #battleResults -->
+
+    </div><!-- end #battleSection -->
+
+  </div><!-- end .page -->
+
+  <!-- Our JS -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cover Letter Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <h1>Cover Letter <span class="accent">Generator</span></h1>
+      <p class="subtitle">Fill in the details and get a ready-to-send cover letter.</p>
+    </header>
+
+    <main>
+      <!-- Form Section -->
+      <section class="card form-card">
+        <h2>Your Details</h2>
+
+        <div class="field">
+          <label for="name">Candidate Name</label>
+          <input type="text" id="name" placeholder="e.g. Priya Sharma" />
+        </div>
+
+        <div class="field">
+          <label for="role">Job Role</label>
+          <input type="text" id="role" placeholder="e.g. Frontend Developer" />
+        </div>
+
+        <div class="field">
+          <label for="company">Target Company</label>
+          <input type="text" id="company" placeholder="e.g. Google" />
+        </div>
+
+        <div class="field">
+          <label for="skills">Key Skills</label>
+          <input type="text" id="skills" placeholder="e.g. React, CSS, JavaScript" />
+        </div>
+
+        <button id="generateBtn">Generate Letter</button>
+      </section>
+
+      <!-- Output Section -->
+      <section class="card output-card" id="outputSection">
+        <div class="output-header">
+          <h2>Your Cover Letter</h2>
+          <button id="copyBtn" class="copy-btn">Copy</button>
+        </div>
+        <div id="letterOutput" class="letter-body">
+          Your generated cover letter will appear here...
+        </div>
+        <p id="copyNotice" class="copy-notice">✓ Copied to clipboard!</p>
+      </section>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

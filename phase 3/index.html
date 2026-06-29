@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Prodesk IT helps businesses grow online with SEO, Web Development, and Digital Marketing services based in New Delhi." />
+  <title>Prodesk IT — Digital Experiences</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              orange: '#e85d26',
+              orangeHover: '#c94f1e',
+              gold: '#c9a84c',
+              dark: '#111111',
+            }
+          },
+          backdropBlur: {
+            xs: '2px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="font-body bg-white text-gray-900 transition-colors duration-300" id="body">
+
+  <!-- ===================== NAVBAR (Glassmorphism) ===================== -->
+  <nav
+    id="navbar"
+    role="navigation"
+    aria-label="Main navigation"
+    class="fixed top-0 left-0 right-0 z-50 h-16
+           bg-white/60 dark:bg-black/50
+           backdrop-blur-md
+           border-b border-white/30 dark:border-white/10
+           transition-all duration-300"
+  >
+    <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded" aria-label="Prodesk IT - Home">
+        <img src="logo.png" alt="Prodesk IT Logo" width="42" height="42" class="w-10 h-10 object-contain" />
+        <span class="font-display text-lg font-bold tracking-widest text-brand-gold">PRODESK IT</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="hidden md:flex gap-8" role="list">
+        <li><a href="#home"     class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-orange dark:hover:text-brand-orange transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded">Home</a></li>
+        <li><a href="#about"    class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-orange dark:hover:text-brand-orange transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded">About</a></li>
+        <li><a href="#services" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-orange dark:hover:text-brand-orange transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded">Services</a></li>
+        <li><a href="#contact"  class="nav-link text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-orange dark:hover:text-brand-orange transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded">Contact</a></li>
+      </ul>
+
+      <!-- Right: Dark Toggle + Hamburger -->
+      <div class="flex items-center gap-3">
+        <!-- Dark Mode Toggle -->
+        <label class="relative inline-block w-14 h-8 cursor-pointer" aria-label="Toggle dark mode">
+          <input type="checkbox" class="sr-only peer" id="themeToggle" onchange="toggleTheme()" />
+          <span class="absolute inset-0 bg-gray-300 dark:bg-blue-500 rounded-full transition-colors duration-300 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-orange"></span>
+          <span class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow transition-transform duration-300 peer-checked:translate-x-6"></span>
+        </label>
+
+        <!-- Hamburger (mobile) -->
+        <button
+          class="md:hidden text-2xl bg-transparent border-none cursor-pointer text-gray-800 dark:text-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded"
+          id="hamburger"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          onclick="toggleMenu()"
+        >☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobileMenu"
+      class="md:hidden hidden flex-col bg-white/90 dark:bg-gray-900/95 backdrop-blur-md
+             border-t border-gray-200 dark:border-gray-700 px-6 py-4 gap-4"
+      role="menu"
+      aria-label="Mobile navigation"
+    >
+      <a href="#home"     class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-brand-orange dark:hover:text-brand-orange transition-colors" onclick="closeMenu()" role="menuitem">Home</a>
+      <a href="#about"    class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-brand-orange dark:hover:text-brand-orange transition-colors" onclick="closeMenu()" role="menuitem">About</a>
+      <a href="#services" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-brand-orange dark:hover:text-brand-orange transition-colors" onclick="closeMenu()" role="menuitem">Services</a>
+      <a href="#contact"  class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-brand-orange dark:hover:text-brand-orange transition-colors" onclick="closeMenu()" role="menuitem">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section
+    id="home"
+    class="min-h-screen pt-16 flex flex-col items-center justify-center text-center px-6
+           bg-[#fff4ee] dark:bg-gray-950 transition-colors duration-300"
+    aria-label="Hero section"
+  >
+    <h1 class="font-display text-5xl md:text-6xl font-extrabold mb-5 leading-tight text-gray-900 dark:text-white animate-fadeUp">
+      We Build Digital Experiences
+    </h1>
+    <p class="text-lg text-gray-500 dark:text-gray-400 max-w-xl mb-8 leading-relaxed animate-fadeUp delay-100">
+      Prodesk IT helps businesses grow online with SEO, Web Development, and Digital Marketing.
+    </p>
+    <a href="#services" class="btn-primary animate-fadeUp delay-200" aria-label="Get started with our services">
+      Get Started
+    </a>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section
+    id="about"
+    class="py-20 px-6 bg-white dark:bg-gray-900 text-center transition-colors duration-300"
+    aria-labelledby="about-heading"
+  >
+    <h2 id="about-heading" class="font-display text-4xl font-bold mb-5 text-gray-900 dark:text-white">About Us</h2>
+    <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+      We are a full-service digital agency based in New Delhi. Our team of experts helps businesses of all sizes build their online presence and grow their revenue through smart digital strategies.
+    </p>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section
+    id="services"
+    class="py-20 px-6 bg-[#f9f7f4] dark:bg-gray-950 text-center transition-colors duration-300"
+    aria-labelledby="services-heading"
+  >
+    <h2 id="services-heading" class="font-display text-4xl font-bold mb-10 text-gray-900 dark:text-white">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto" role="list">
+
+      <article
+        class="service-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 text-left
+               transition-all duration-250 hover:-translate-y-1 hover:scale-[1.03] hover:bg-[#ffd28d] dark:hover:bg-[#352710]
+               hover:shadow-[0_8px_20px_rgba(232,93,38,0.35)]"
+        role="listitem"
+      >
+        <h3 class="font-display text-xl font-bold mb-3 text-brand-orange">SEO</h3>
+        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">We optimize your website to rank higher on Google and drive more organic traffic to your business.</p>
+      </article>
+
+      <article
+        class="service-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 text-left
+               transition-all duration-250 hover:-translate-y-1 hover:scale-[1.03] hover:bg-[#ffd28d] dark:hover:bg-[#352710]
+               hover:shadow-[0_8px_20px_rgba(232,93,38,0.35)]"
+        role="listitem"
+      >
+        <h3 class="font-display text-xl font-bold mb-3 text-brand-orange">Web Development</h3>
+        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">We build fast, responsive, and modern websites and web applications using the latest technologies.</p>
+      </article>
+
+      <article
+        class="service-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 text-left
+               transition-all duration-250 hover:-translate-y-1 hover:scale-[1.03] hover:bg-[#ffd28d] dark:hover:bg-[#352710]
+               hover:shadow-[0_8px_20px_rgba(232,93,38,0.35)]"
+        role="listitem"
+      >
+        <h3 class="font-display text-xl font-bold mb-3 text-brand-orange">Digital Marketing</h3>
+        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">We run targeted campaigns on Google, Facebook, and Instagram to grow your brand and generate leads.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section
+    id="contact"
+    class="py-20 px-6 bg-white dark:bg-gray-900 text-center transition-colors duration-300"
+    aria-labelledby="contact-heading"
+  >
+    <h2 id="contact-heading" class="font-display text-4xl font-bold mb-8 text-gray-900 dark:text-white">Contact Us</h2>
+    <form
+      onsubmit="formSubmit(event)"
+      class="flex flex-col gap-4 max-w-xl mx-auto"
+      aria-label="Contact form"
+      novalidate
+    >
+      <label for="contactName" class="sr-only">Your Name</label>
+      <input
+        id="contactName"
+        type="text"
+        placeholder="Your Name"
+        required
+        autocomplete="name"
+        class="px-5 py-4 text-sm border border-gray-200 dark:border-gray-600 rounded-xl w-full outline-none
+               bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100
+               focus:border-brand-orange transition-colors duration-200"
+      />
+      <label for="contactEmail" class="sr-only">Your Email</label>
+      <input
+        id="contactEmail"
+        type="email"
+        placeholder="Your Email"
+        required
+        autocomplete="email"
+        class="px-5 py-4 text-sm border border-gray-200 dark:border-gray-600 rounded-xl w-full outline-none
+               bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100
+               focus:border-brand-orange transition-colors duration-200"
+      />
+      <label for="contactMessage" class="sr-only">Your Message</label>
+      <textarea
+        id="contactMessage"
+        placeholder="Your Message"
+        required
+        rows="5"
+        class="px-5 py-4 text-sm border border-gray-200 dark:border-gray-600 rounded-xl w-full outline-none
+               bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100
+               focus:border-brand-orange transition-colors duration-200 resize-vertical font-body"
+      ></textarea>
+      <button type="submit" class="btn-primary" aria-label="Send your message">Send Message</button>
+    </form>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-gray-950 text-gray-100 py-8 px-6 flex flex-col items-center gap-4 text-center" role="contentinfo">
+    <p class="text-sm text-gray-400">&copy; 2026 Prodesk IT. All rights reserved.</p>
+    <nav aria-label="Social media links" class="flex gap-5">
+      <a href="https://www.facebook.com/prodesktechnology/" target="_blank" rel="noopener noreferrer"
+         class="text-sm text-gray-400 hover:text-brand-orange transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded">Facebook</a>
+      <a href="https://www.instagram.com/prodeskit/tagged/" target="_blank" rel="noopener noreferrer"
+         class="text-sm text-gray-400 hover:text-brand-orange transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded">Instagram</a>
+      <a href="https://www.linkedin.com/company/prodesk-it/posts/?feedView=all" target="_blank" rel="noopener noreferrer"
+         class="text-sm text-gray-400 hover:text-brand-orange transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded">LinkedIn</a>
+      <a href="#" class="text-sm text-gray-400 hover:text-brand-orange transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded">Twitter</a>
+    </nav>
+  </footer>
+
+  <script>
+    // ---- Dark Mode ----
+    function toggleTheme() {
+      const isDark = document.getElementById('themeToggle').checked;
+      document.documentElement.classList.toggle('dark', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // Persist theme on load
+    (function () {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        const toggle = document.getElementById('themeToggle');
+        if (toggle) toggle.checked = true;
+      }
+    })();
+
+    // ---- Mobile Menu ----
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('hamburger');
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', isOpen);
+      menu.classList.toggle('flex', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      btn.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('hamburger');
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Open navigation menu');
+    }
+
+    // ---- Navbar Scroll Shadow ----
+    window.addEventListener('scroll', function () {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 10) {
+        navbar.classList.add('shadow-md');
+      } else {
+        navbar.classList.remove('shadow-md');
+      }
+    }, { passive: true });
+
+    // ---- Contact Form ----
+    function formSubmit(event) {
+      event.preventDefault();
+      alert('Message sent! We will get back to you soon.');
+      event.target.reset();
+    }
+  </script>
+
+</body>
+</html>

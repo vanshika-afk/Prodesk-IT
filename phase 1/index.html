@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prodesk IT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+
+      <div class="logo">
+        <img src="logo.png" alt="Prodesk Logo" />
+        <span>PRODESK IT</span>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+          &#9776;
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <h1>We Build Digital Experiences</h1>
+    <p>Prodesk IT helps businesses grow online with SEO, Web Development, and Digital Marketing.</p>
+    <a href="#services" class="btn">Get Started</a>
+  </section>
+
+
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card"><h3>SEO</h3><p>We optimize your website to rank higher on Google and drive more organic traffic to your business.</p></div>
+      <div class="card"><h3>Web Development</h3><p>We build fast, responsive, and modern websites and web applications using the latest technologies</p></div>
+      <div class="card"><h3>Digital Marketing</h3><p>We run targeted campaigns on Google, Facebook, and Instagram to grow your brand and generate leads.></p></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2026 Prodesk IT. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/prodesktechnology/">Facebook</a>
+      <a href="https://www.instagram.com/prodeskit/">Instagram</a>
+      <a href="https://www.linkedin.com/company/prodesk-it/">LinkedIn</a>
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
